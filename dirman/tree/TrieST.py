@@ -1,17 +1,43 @@
+"""
+A symbol table implementation using a Trie data structure.
+"""
+
 from queue import Queue
-from dirman.TreeNode import TreeNode
+from typing import Tuple
+from dirman.tree.TreeNode import TreeNode
 
 class TrieST:
     def __init__(self):
         self.root = TreeNode()
 
 
-    def insert(self, key, value, is_dir = False, root = False):
+    def insert(
+            self, 
+            key: str, 
+            value: str, 
+            is_dir: bool = False, 
+            root: bool = False,
+        ) -> Tuple[bool, TreeNode]:
+        """
+        Adds a key-value pair to the TrieST.
+
+        Args:
+            key (str): The string key to add.
+            value (str): Value of the key.
+            is_dir (bool, optional): is key a directory. Defaults to False.
+            root (bool, optional): is key the root directory. Defaults to False.
+
+        Returns:
+            Tuple[bool, TreeNode]: (True, node) if a new key is inserted,
+                (False, node) if key is updated (already exists).
+        """
         self._key_valid(key)
         node = self.root
         tree_level = 1
+        is_new_key = False
         for char in key:
             if char not in node.children:
+                is_new_key = True
                 node.children[char] = TreeNode(tree_level = tree_level)
             if node.children[char].is_dir:
                 tree_level += 1
@@ -20,6 +46,7 @@ class TrieST:
         node.is_dir = is_dir
         if root:
             node.tree_level = 0
+        return is_new_key, node
     
 
     def delete(self, key):
@@ -35,10 +62,10 @@ class TrieST:
     def get(self, key):
         self._key_valid(key)
         node = self.root
-        for i, char in enumerate(key):
+        for char in key:
             if char not in node.children:
                 return None
-            node = node.children[key[i]]
+            node = node.children[char]
         return node.value
 
 

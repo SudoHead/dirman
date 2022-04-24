@@ -18,5 +18,5 @@ setup(
             'dirman=dirman.dirman:main',
         ]
     },
-    packages=find_packages('dirman'),
+    packages=find_packages('.'),
 )

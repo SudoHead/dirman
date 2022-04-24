@@ -1,14 +1,14 @@
 import click
 import prompt_toolkit as cli
-from dirman.TrieST import TrieST
-from dirman.Manager import Manager
+from dirman.tree.TrieST import TrieST
+from dirman.tree.DirectoryTree import DirectoryTree
 import dirman.commands as commands
 import inspect, functools
 
 prompt_history = cli.history.InMemoryHistory()
 prompt_session = cli.PromptSession(history = prompt_history)
 
-manager = Manager()
+directory_tree = DirectoryTree()
 
 
 def command(func = None, name = None, help = None):
@@ -25,20 +25,19 @@ def command(func = None, name = None, help = None):
 
 @command
 def add(directory: str):
-    print("I am adding:", directory)
-    manager.add(directory)
+    print("Added", directory_tree.add(directory), "entries")
 
 
 @command
 def delete(path: str):
     print("Deleting:", path)
-    manager.delete(path)
+    directory_tree.delete(path)
 
 
 @command
 def view(directory: str = ''):
-    print("I am view: ", directory)
-    output = manager.view(directory)
+    print("Viewing: ", directory)
+    output = directory_tree.view(directory)
     click.echo_via_pager(output)
 
 
@@ -80,7 +79,7 @@ def history():
 
 
 @command(name = '!')
-def go_to_history(history_index: int):
+def repeat_history(history_index: int):
     try:
         history_index = int(history_index)
     except ValueError:

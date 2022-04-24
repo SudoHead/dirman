@@ -9,3 +9,4 @@ pyparsing==3.0.8
 pytest==7.1.1
 tomli==2.0.1
 wcwidth==0.2.5
+coloredlogs==15.0.1

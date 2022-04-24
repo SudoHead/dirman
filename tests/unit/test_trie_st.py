@@ -2,7 +2,7 @@
 Tests for TrieST.py
 """
 from pytest import fixture
-from dirman.TrieST import TrieST
+from dirman.tree.TrieST import TrieST
 
 @fixture
 def trie_dict():
