@@ -1,0 +1,164 @@
+ THE JAPANESE LANGUAGE IN WinCALIS
+ウインカリッスの日本語
+STUFF FOR STUDENTS AND AUTHORS:
+Keyboards:
+Once you choose Japanese as your language, you will be offered five keyboard choices: Roman-to-Kanji, Roman-to-Kana Only, JIS Hiragana Keyboard, JIS Katakana Keyboard and Kanji by shape (Soketsu). Notice that the author may toggle back and forth between two languages using the F3 key (convenient for text that has a blend of Japanese and English). Following are descriptions of each keyboard:
+
+Roman-to-Kanji
+This keyboard will transform your Roman characters into kana or kanji. WinCALIS 2.0 and WinCALIS Author 2.0 support the two most common systems for transliterating Japanese in Roman characters: 1) the Hepburn system; and 2) the "Kunrei" system. Some Japanese word-processing systems allow many non-standard ways of entering Japanese in romanized form (e.g., "ca" for "ka," "jya" for "ja/zya," etc.). Refer to the kana chart to see how each character may be accessed in WinCALIS. Keep in mind also the following peculiarities.
+
+Typing Object Markers
+
+    to type   を, an object marker, you must type "w-o". If you type "o", you will get お.
+    to type は as an object marker, like in the sentence "私は学生です", you must type "h-a", even though it is pronounced "wa". If you type "w-a", you will get わ. 
+
+Typing Tiny Characters
+
+    WinCALIS will include the tiny "っ" within words, e.g.: いってif "i-t-t-e" is inputted, or さっちゃん for "s-a-t-c-h-a-n-n". You may also get a っ by typing "x-t-u" (or any of the other combinations as found in the kana chart listed under that character). The pattern for typing a small character in isolation is to precede it with either an "x" or an "l" (capital "X" and "L" for katakana). 
+
+Typing "ん"
+
+    ん has some peculiarities. To type ん at the end of a word, you must type "n-n". But if you want to type a word where ん is not followed by a な gyo, you can just type one "n". e.g.: to get こんど, you would type "k-o-n-d-o". If ん is followed by a な gyo, e.g.: to get さんにん, you would have to type "s-a-n-n-n-i-n-n". If the word is followed by an あ gyo, then you must also type two "n"s, e.g.: "s-i-n-n-a-i" for しんあい. 
+
+Typing vowel extensions
+
+    In order to get the long "o" sound, the user must actually type in "u", e.g.: type "k-y-o-u" in order to get きょう. For katakana, use the dash "-" for vowel extensions. 
+
+Typing in Katakana
+
+    to type in katakana, simply press Shift or CapsLock, or type in hiragana and then convert to katakana with the spacebar. As you may have noticed on the kana chart, there are a few unconventional combinations of characters. These will probably be used more for foreign words, e.g: type in "f-o- - -m-u", then press the Spacebar, then Enter to accept the katakana conversion to the English word "form", which is in the program dictionary. You will however, have to type in capitals in order to get proper nouns in katakana. 
+
+Typing Numbers
+
+    you may convert arabic numbers to kanji, e.g.:１００ to 百. 
+
+THE BUFFER
+There are important things to know about buffers when you are typing Japanese. If the characters are not black, you are in an active buffer and you must do something to clear the buffer. If the computer beeps at you, it means that you are trying to do something outside of the active buffer, and you must clear it (by pressing Enter) before you can continue.
+
+When in the Roman-to-Kanji keyboard, this is the process for entering text:
+
+1) When you type hiragana, the letters will appear blue (active buffer). If you want the words to remain in hiragana, simply press Enter.
+
+2) If you want to convert the words into kanji, press the spacebar, while the characters are still blue. Kanji will replace the words in blue and the sentence will appear red (active buffer). If all conversions are correct, press Enter (Note: The maximum length of a phrase to be converted is 32 characters. When you type the 32nd character, the phrase will automatically be converted).
+
+3) If any conversions are incorrect, do the following while the characters are still red. The reverse video block is your bunsetsu. Simply move the bunsetsu over the inappropriate conversion and press the Spacebar. The homophone list will appear on the screen. Move the arrows to the desired kanji, then press Enter. The selected kanji will appear in the phrase in reverse video. If this is correct, press Enter again.
+Note: THE HOMOPHONE LIST
+When you choose a kanji off the homophone list, the program will "remember" that one and present it next time the same kana are entered. The kanji most frequently used will be given priority over the other homophones (this does not rearrange the homophone list, which is constant. Here, a separate user history file is being created and constantly updated).
+
+4) WinCALIS divides your sentence into bunsetsu blocks as its dictionary sees fit, but you may change these blocks. First, convert back to hiragana by choosing it from the list (if you try to change the bunsetsu while there is still Kanji within the active buffer, you will get a pop up message reminding you to convert). Use the shifted left arrow to mark the first bunsetsu. At this point, you may convert that block by pressing the spacebar, or use the arrow keys to "jump" from block to block. To continue to change bunsetsu blocking, move to the block that you would like to adjust, and use the shifted right and left arrow keys to shrink or expand it.
+
+5) The user may find it helpful to clear the buffer (press Enter) early and often while working in the Roman-to-Kanji keyboard so the bunsetsu stay manageable. This will be convenient both for maintaining kana, and in locating the desired kanji. It is especially helpful when typing honorific prefixes: first type the prefix "お" or "ご", then press Enter to clear the active conversion buffer, then type the rest of the noun phrase and convert it. If the homophone list does not display the character you want, try changing the blocking of the bunsetsu. With use, you will become more familiar with how the transliteration process occurs within WinCALIS.
+
+Look at the following passage, and notice the bunsetsu blocks -- the bars indicate the points where conversions may be most efficiently placed (where the spacebar should be pressed):
+
+    　 　 「ユーザーフレンドリ」｜と｜呼ばれる｜ 　　りゆうは、ごく ｜普通の｜人がごく｜ 　　関単に ｜使用 ｜方法を｜マスター｜でき、｜ 　　毎日の｜タイプ ｜ の ｜仕事にすぐ ｜ 　　役立てることができることからきている。｜ 
+
+This passage includes hiragana, katakana, kanji, and punctuation, so it is a nice exercise routine for typing Japanese. Notice how each bunsetsu is entered:
+
+    　　 　　よばれる　　　　－　　　 　呼ばれる 　　りゅうは、ごく　－　　　　 理由は、ごく 　　ふつうの　　　　－　　　　普通の 　　ひとがごく　　　－　　　　人がごく 　　かんたんに　　　－　　　　簡単に 　　しよう　　　　　－　　　　使用 　　ほうほうを　　　－　　　　方法を 　　まいにちの　　　－　　　　毎日の 　　しごとにすぐ　　－　　　　仕事にすぐ 　　やくだてることができることからきている。－ 　　役立てることができることからきている。 
+
+Roman-to-Kana Only
+This keyboard lets you type in kana characters without going through the buffer, so you need not press Enter for each bunsetsu (refer to the kana chart to see how it accepts transliteration). It will automatically change Roman characters into hiragana; katakana may be accessed by pressing Shift or CapsLock.
+
+JIS Kana Keyboards
+These keyboards transform the QWERTY keyboard into one that directly enters kana characters, according to the Japanese Industrial Standard. For a display of the corresponding keyboard, click on Help, and choose Keyboard Help.
+
+    To type a voiced kana (marked with "dakuten" two dots), first type the key for its unmarked unvoiced counterpart, then press the "dead key," (F2), then press the "dakuten" accent key, which is the key marked with double quote " (the shifted single quote ' key). For example, to type が, first type か (the "t" key), then press the dead key (F2), ( か will appear in reverse video), then press the "dakuten" accent key (").
+    To type a kana beginning with the "p" sound (marked with "handakuten" circle), first type the key for its unmarked counterpart, then press the "dead key," the key marked F2, then press the "handakuten" accent key, which is the "o" key (the letter "o" suggests the little circle diacritic). For example, to type ぴ, first type ひ (the "v" key), then press the dead key (F2), (ひ will appear in reverse video), then press the "handakuten" accent key (o). 
+
+Kanji by shape (Soketsu)
+Kanji characters are composed of "root" shapes. Instead of retrieving a character by its pronunciation, this keyboard allows the user to locate a character by its looks; by elements of its root structure. This is especially helpful in situations where you know what the character looks like, but not how it is pronounced. The root structures are accessed by choosing the Kanji-by-shape (Soketsu) keyboard, and clicking on the piano-keyboard-style buttons. Notice that the database requires you to preface any duplicate characters with the "X" key, 重複。
+STUFF SPECIFICALLY FOR AUTHORS:
+Authoring a Japanese WinCALIS lesson can be done, for the most part, according to the manual. There are, however, a few variations that arise because of the integration of two different languages and four different alphabets. Besides keeping in mind all of the quirks of typing in Japanese text, the author must consider how the text content is processed and presented to the student.
+
+Preparing Students for the Mechanics of the Lesson
+
+    In the directions box, the author may want to tell the students more than just "Fill in the blanks." The students may need reminding on how to access different keyboards; what keyboard they should have for the lesson; and any other information that would help them in the mechanics of the lesson. Remember that, in the "Roman to Kanji" keyboard, the student must 1) be in the right keyboard, 2) type in their answer, 3) If necessary, choose a kanji off the homophone list, 4) Clear the buffer (by pressing Enter), and finally: 5) Enter their answer. 
+
+Typing in Two Languages
+
+    Toggling between two languages can be done either by: clicking and dragging the mouse on the language choice from the options list; pressing F3 to toggle to the language at the top of the language list (usually English); or by clicking and dragging with the right-hand mouse button. 
+
+"Cloze Exercise" Hints
+
+    The cloze exercise in WinCALIS may be finicky with Japanese. Since the program is very specific about what is marked within the text, it is also specific about what the student enters. Since Japanese is entered differently than English, e.g.: you must enter "n-i", two characters, in English in order to access the single Japanese character "に" (or seven letters for the single character 私！), the author should choose a fixed blank length so that the student is able to type in the answer. 
+
+ABC and ＡＢＣ
+
+    Full width Roman characters are accessed by typing Ctrl, Shift, and the character. This provides aesthetic appeal in situations where Roman characters are included within Japanese text, such as ＸＹＺ会社． 
+
+Punctuation in Japanese
+Setting aside keyboard exploration time may make entering Japanese text easier. Because Japanese uses some punctuation that is exclusive to Japanese, the characters may be hidden from view on the standard English keyboard. Most of the punctuation parallels the basic keyboard, but it is in a 'zenkaku', full-width form. The keyboard layout is displayed by clicking on Help and dragging to Keyboard Help. Here are a few marks that are specific to the Japanese language, and how to produce them:
+To produce a:
+－ (dash)
+．(bold period)
+・(bullet) 	type this:
+~
+^
+/
+
+"Wild Card" Hints
+
+    The wild card feature is accessed by using a very specific set of characters. Notice that these characters must be reproduced exactly if they are to be used as wild cards. For example, the ampersand "&", the asterisk "*", the bar "|" and the braces "{}" must be entered in this ANSI form -- not the full-width form sized to Japanese writings (＆、＊、｜、「」). 
+
+KANA KODE KEY (or: how to enter kana characters while retaining sanity)
+In order to get a kana character, you must type in one set of Roman letter(s) listed underneath it. The first line of romaji is the Kunrei system. Where applicable, the second line is the Hepburn system, and the third is nonstandard. As an example of usage of this chart: in order for a づ to appear, you input "d-u" or "d-z-u".
+
+あ　い　う　え　お　
+  a        i        u        e        o
+ぁ　ぃ　ぅ　ぇ　ぉ
+ xa       xi       xu      xe      xo
+ la        li         lu       le       lo
+か　き　く　け　こ　　きゃ      きゅ　きょ
+ka        ki       ku     ke       ko         kya           kyu         kyo                                            
+                                        co
+さ　し　す　せ　そ　　しゃ　  しゅ     しぇ　しょ
+ sa       si       su      se      so            sya           syu                        syo
+          shi                ce                     sha          shu          she         sho
+           ci　
+た　ち　つ　て　と　　 ちゃ　ちゅ　ちぇ  ちょ
+ ta       ti        tu        te      to            tya          tyu                     tyo
+         chi      tsu                               cha         chu          che     cho
+な　に　ぬ　ね　の　　  にゃ　  にゅ　にょ
+ na      ni       nu      ne       no            nya          nyu         nyo
+は　ひ　ふ　へ　ほ　　   ひゃ   　ひゅ    ひょ
+ ha      hi       hu      he      ho              hya           hyu          hyo
+                    fu
+                                                        ふぁ　ふぃ　ふぇ　ふぉ
+                                                          fa            fi             fe            fo
+ま　み　む　め　も　　   みゃ　　みゅ　　みょ
+ ma    mi       mu     me     mo             mya             myu           myo
+や　(い)　ゆ   (え)   よ　　 ゃ　　　ゅ　　　ょ
+ ya                  yu                yo　　xya              xyu              xyo 　 
+                                                        lya               lyu               lyo
+ら　り　る　れ　ろ　　りゃ      りゅ　      りょ
+ ra       ri       ru       re       ro             rya             ryu              ryo
+わ　ゐ    (う)   ゑ　 を          ゎ           　ヰ　　　ヱ
+ wa     wi                we      wo　　Wa                WI             WE
+ん               ゔ               っ            tinyカ　tinyケ
+ nn　　　  vu　　       xtu　　   XKA       XKE
+ n'                                       ltu             LKA       LKE
+                                         xtsu
+                                         ltsu
+ 
+が　ぎ　ぐ　げ　ご　　  ぎゃ　ぎゅ　ぎょ
+ ga      gi       gu     ge       go             gya       gyu         gyo
+                                                        ぐゎ　ぐぇ
+                                                          gwa　   gwe　　　
+ざ　じ　ず　ぜ　ぞ　　じゃ　   じゅ　 じぇ　じょ
+ za      zi       zu      ze       zo                 zya           zyu             zye        zyo
+           ji                                                ja                 ju             je          jo
+だ　ぢ　づ　で　ど　　ぢゃ　ぢぃ　   ぢゅ     ぢぇ　ぢぉ
+ da    di      du        de       do　　     dya          dyi             dyu          dye        dyo　
+                 dzu
+ば　び　ぶ　べ　ぼ　　　びゃ　びゅ　びょ
+ ba     bi       bu      be      bo                bya        byu         byo
+ぱ　ぴ　ぷ　ぺ　ぽ　　　ぴゃ　ぴゅ　ぴょ
+ pa       pi       pu      pe     po                pya        pyu        pyo
+
+
+ワ　ウィ  ウ　ウェ  ウォ　ヴァ　ヴィ　ヴ　ヴェ　ヴォ
+ wa       uxi      u          uxe      uxo　   VA        VI          VU        VE        VO
+             uli                   ule      ulo
+
+Rev. SLS 8-10-94 

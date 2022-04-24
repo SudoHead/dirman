@@ -1,0 +1,634 @@
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py', shell=True)
+Expecting:
+    Traceback (most recent call last):
+        File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+**********************************************************************
+File "/mnt/c/Users/maxxi/Desktop/workspace/msc/softEn1/cw1/miniwc_doctest.py", line 20,
+in miniwc_doctest
+Failed example:
+    subprocess.check_output('python3 miniwc.py', shell=True)
+Expected:
+    Traceback (most recent call last):
+        File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Got:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest miniwc_doctest[6]>", line 1, in <module>
+        subprocess.check_output('python3 miniwc.py', shell=True)
+      File "/usr/lib/python3.6/subprocess.py", line 336, in check_output
+        **kwargs).stdout
+      File "/usr/lib/python3.6/subprocess.py", line 418, in run
+        output=stdout, stderr=stderr)
+    subprocess.CalledProcessError: Command 'python3 miniwc.py' returned non-zero exit status 1.
+**********************************************************************
+1 items had failures:
+   1 of   7 in miniwc_doctest
+7 tests in 1 items.
+6 passed and 1 failed.
+***Test Failed*** 1 failures.
+$python3 miniwc.py
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py', shell=True)
+Expecting:
+    Traceback (most recent call last):
+      File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+**********************************************************************
+File "/mnt/c/Users/maxxi/Desktop/workspace/msc/softEn1/cw1/miniwc_doctest.py", line 20,
+in miniwc_doctest
+Failed example:
+    subprocess.check_output('python3 miniwc.py', shell=True)
+Expected:
+    Traceback (most recent call last):
+      File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Got:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest miniwc_doctest[6]>", line 1, in <module>
+        subprocess.check_output('python3 miniwc.py', shell=True)
+      File "/usr/lib/python3.6/subprocess.py", line 336, in check_output
+        **kwargs).stdout
+      File "/usr/lib/python3.6/subprocess.py", line 418, in run
+        output=stdout, stderr=stderr)
+    subprocess.CalledProcessError: Command 'python3 miniwc.py' returned non-zero exit status 1.
+**********************************************************************
+1 items had failures:
+   1 of   7 in miniwc_doctest
+7 tests in 1 items.
+6 passed and 1 failed.
+***Test Failed*** 1 failures.
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ', shell=True)
+Expecting:
+    Traceback (most recent call last):
+      File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+**********************************************************************
+File "/mnt/c/Users/maxxi/Desktop/workspace/msc/softEn1/cw1/miniwc_doctest.py", line 20,
+in miniwc_doctest
+Failed example:
+    subprocess.check_output('python3 miniwc.py ', shell=True)
+Expected:
+    Traceback (most recent call last):
+      File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Got:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest miniwc_doctest[6]>", line 1, in <module>
+        subprocess.check_output('python3 miniwc.py ', shell=True)
+      File "/usr/lib/python3.6/subprocess.py", line 336, in check_output
+        **kwargs).stdout
+      File "/usr/lib/python3.6/subprocess.py", line 418, in run
+        output=stdout, stderr=stderr)
+    subprocess.CalledProcessError: Command 'python3 miniwc.py ' returned non-zero exit status 1.
+**********************************************************************
+1 items had failures:
+   1 of   7 in miniwc_doctest
+7 tests in 1 items.
+6 passed and 1 failed.
+***Test Failed*** 1 failures.
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py', shell=True)
+Expecting:
+    Traceback (most recent call last):
+      File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+**********************************************************************
+File "/mnt/c/Users/maxxi/Desktop/workspace/msc/softEn1/cw1/miniwc_doctest.py", line 20,
+in miniwc_doctest
+Failed example:
+    subprocess.check_output('python3 miniwc.py', shell=True)
+Expected:
+    Traceback (most recent call last):
+      File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet
+Got:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest miniwc_doctest[6]>", line 1, in <module>
+        subprocess.check_output('python3 miniwc.py', shell=True)
+      File "/usr/lib/python3.6/subprocess.py", line 336, in check_output
+        **kwargs).stdout
+      File "/usr/lib/python3.6/subprocess.py", line 418, in run
+        output=stdout, stderr=stderr)
+    subprocess.CalledProcessError: Command 'python3 miniwc.py' returned non-zero exit status 1.
+**********************************************************************
+1 items had failures:
+   1 of   7 in miniwc_doctest
+7 tests in 1 items.
+6 passed and 1 failed.
+***Test Failed*** 1 failures.
+$ls
+__pycache__  miniwc.py  miniwc_doctest.py  miniwc_doctest.pyc  testinputs
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'ok
+1 items passed all tests:
+   6 tests in miniwc_doctest
+6 tests in 1 items.
+6 passed and 0 failed.
+Test passed.
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+okTrying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ThisFileDoesNotExit.404', shell=True)
+Expecting:
+    miniwc: ThisFileDoesNotExit.404: No such file or directory
+**********************************************************************
+File "/mnt/c/Users/maxxi/Desktop/workspace/msc/softEn1/cw1/miniwc_doctest.py", line 20,
+in miniwc_doctest
+Failed example:
+    subprocess.check_output('python3 miniwc.py ThisFileDoesNotExit.404', shell=True)
+Expected:
+    miniwc: ThisFileDoesNotExit.404: No such file or directory
+Got:
+    b'miniwc: ThisFileDoesNotExit.404: No such file or directory\n'**********************************************************************
+1 items had failures:
+   1 of   7 in miniwc_doctest
+7 tests in 1 items.
+6 passed and 1 failed.
+***Test Failed*** 1 failures.
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ThisFileDoesNotExit.404', shell=True)
+Expecting:
+    b'miniwc: ThisFileDoesNotExit.404: No such file or directory\n'
+ok
+1 items passed all tests:
+   7 tests in miniwc_doctest
+7 tests in 1 items.
+7 passed and 0 failed.
+Test passed.
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+$ls
+__pycache__  miniwc.py  miniwc_doctest.py  miniwc_doctest.pyc  testinputs
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ThisFileDoesNotExit.404', shell=True)
+Expecting:
+    b'miniwc: ThisFileDoesNotExit.404: No such file or directory\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ', shell=True)
+Expecting:
+    b'Traceback (most recent call last):
+      File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet\'
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+**********************************************************************
+File "/mnt/c/Users/maxxi/Desktop/workspace/msc/softEn1/cw1/miniwc_doctest.py", line 23,in miniwc_doctest
+Failed example:
+    subprocess.check_output('python3 miniwc.py ', shell=True)
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest miniwc_doctest[7]>", line 1, in <module>
+        subprocess.check_output('python3 miniwc.py ', shell=True)
+      File "/usr/lib/python3.6/subprocess.py", line 336, in check_output
+        **kwargs).stdout
+      File "/usr/lib/python3.6/subprocess.py", line 418, in run
+        output=stdout, stderr=stderr)
+    subprocess.CalledProcessError: Command 'python3 miniwc.py ' returned non-zero exit status 1.
+**********************************************************************
+1 items had failures:
+   1 of   8 in miniwc_doctest
+8 tests in 1 items.
+7 passed and 1 failed.
+***Test Failed*** 1 failures.
+$python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Trying:
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ThisFileDoesNotExit.404', shell=True)
+Expecting:
+    b'miniwc: ThisFileDoesNotExit.404: No such file or directory\n'
+ok
+Trying:
+    [1, 2, 3].remove(42)
+Expecting:
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ValueError: list.remove(x): x not in list
+ok
+1 items passed all tests:
+   8 tests in miniwc_doctest
+8 tests in 1 items.
+8 passed and 0 failed.
+Test passed.
+$python3 miniwc.py  waodaw
+miniwc: waodaw: No such file or directory
+$python3 miniwc.py
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet$python3 miniwc.py
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+$clear && python3 -m doctest -v miniwc_doctest.py
+Trying:
+    import subprocess
+Expecting nothing
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test1.txt', shell=True)
+Expecting:
+    b'10 10 20 testinputs/test1.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test2.txt', shell=True)
+Expecting:
+    b'  2  69 446 testinputs/test2.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test3.txt', shell=True)
+Expecting:
+    b'0 0 0 testinputs/test3.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/test4.txt', shell=True)
+Expecting:
+    b' 104  858 6121 testinputs/test4.txt\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py testinputs/rainfall.py', shell=True)
+Expecting:
+    b' 29 144 919 testinputs/rainfall.py\n'
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ThisFileDoesNotExit.404', shell=True)
+Expecting:
+    b'miniwc: ThisFileDoesNotExit.404: No such file or directory\n'
+ok
+Trying:
+    [1, 2, 3].remove(42)
+Expecting:
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    ValueError: list.remove(x): x not in list
+ok
+Trying:
+    subprocess.check_output('python3 miniwc.py ', shell=True)
+Expecting:
+    b'Traceback (most recent call last):  File "miniwc.py", line 45, in <module>
+        raise SpecError
+    __main__.SpecError: We don’t handle that situation yet\n'
+Traceback (most recent call last):
+  File "miniwc.py", line 45, in <module>
+    raise SpecError
+__main__.SpecError: We don’t handle that situation yet
+**********************************************************************
+File "/mnt/c/Users/maxxi/Desktop/workspace/msc/softEn1/cw1/miniwc_doctest.py", line 28,
+in miniwc_doctest
+Failed example:
+    subprocess.check_output('python3 miniwc.py ', shell=True)
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.6/doctest.py", line 1330, in __run
+        compileflags, 1), test.globs)
+      File "<doctest miniwc_doctest[8]>", line 1, in <module>
+        subprocess.check_output('python3 miniwc.py ', shell=True)
+      File "/usr/lib/python3.6/subprocess.py", line 336, in check_output
+        **kwargs).stdout
+      File "/usr/lib/python3.6/subprocess.py", line 418, in run
+        output=stdout, stderr=stderr)
+    subprocess.CalledProcessError: Command 'python3 miniwc.py ' returned non-zero exit status 1.
+**********************************************************************
+1 items had failures:
+   1 of   9 in miniwc_doctest
+9 tests in 1 items.
+8 passed and 1 failed.
+***Test Failed*** 1 failures.
