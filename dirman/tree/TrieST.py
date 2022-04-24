@@ -5,6 +5,7 @@ A symbol table implementation using a Trie data structure.
 from queue import Queue
 from typing import Tuple
 from dirman.tree.TreeNode import TreeNode
+from dirman.tree.info import DirInfo, FileInfo
 
 class TrieST:
     def __init__(self):
@@ -60,13 +61,14 @@ class TrieST:
 
     
     def get(self, key):
-        self._key_valid(key)
+        if not key:
+            return self.root
         node = self.root
         for char in key:
             if char not in node.children:
                 return None
             node = node.children[char]
-        return node.value
+        return node
 
 
     def starts_with(self, prefix):

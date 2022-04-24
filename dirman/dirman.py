@@ -37,13 +37,14 @@ def delete(path: str):
 @command
 def view(directory: str = ''):
     print("Viewing: ", directory)
-    output = directory_tree.view(directory)
-    click.echo_via_pager(output)
+    directory_tree.view(directory)
 
 
 @command
-def filter():
-    print("I am filter")
+def filter(directory: str = '', name = '', type = None, gt = None, lt = None):
+    print("Filtering...")
+    output = directory_tree.filter(directory, name, type, gt, lt)
+    click.echo_via_pager(output)
 
 
 @command

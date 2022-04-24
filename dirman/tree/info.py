@@ -49,15 +49,18 @@ class DirInfo:
 
         source: https://stackoverflow.com/questions/14996453/python-libraries-to-calculate-human-readable-filesize-from-bytes
         """
+        if self.size is None:
+            return "?B"
         i = 0
-        while self.size >= 1024 and i < len(SIZE_SUFFIXES) - 1:
-            self.size /= 1024.
+        nbytes = self.size
+        while nbytes >= 1024 and i < len(SIZE_SUFFIXES) - 1:
+            nbytes /= 1024.
             i += 1
-        f = ('%.2f' % self.size).rstrip('0').rstrip('.')
+        f = f"{nbytes:.2f}".rstrip('0').rstrip('.')
         return '%s%s' % (f, SIZE_SUFFIXES[i])
 
     def __str__(self):
-        return f"{self.upload_time} {self.last_accessed} {self.size}"
+        return f"{self.upload_time} {self.last_accessed} {self.humansize()}"
 
 
 class FileInfo(DirInfo):
@@ -73,4 +76,4 @@ class FileInfo(DirInfo):
         self.type = type
 
     def __str__(self):
-        return f"{self.upload_time} {self.last_accessed} {self.size} {self.type}"
+        return f"{self.last_accessed} {self.humansize()} {self.type}"
