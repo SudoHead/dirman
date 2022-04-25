@@ -75,6 +75,9 @@ class DirectoryTree:
         Args:
             path (str): path can be a directory or a file.
         """
+        for i, x in enumerate(self.added_dirs):
+            if x.key == path:
+                del self.added_dirs[i]
         node = self._get_node(self.root, path)
         if node is None:
             path_not_exist_error(path)

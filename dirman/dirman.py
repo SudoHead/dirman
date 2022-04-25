@@ -1,4 +1,3 @@
-import click
 import prompt_toolkit as cli
 from dirman.tree.TrieST import TrieST
 from dirman.tree.DirectoryTree import DirectoryTree
@@ -50,14 +49,14 @@ def view(
 
 
 @command
-def filter(directory, prefix = '', ftype = None, gt = None, lt = None):
+def filter(directory, prefix = '', type = None, gt = None, lt = None):
     print("Filtering: ", directory)
-    if ftype:
+    if type:
         try:
-            ftype = ftype.lower()
-            ftype = FileType[ftype]
+            type = type.lower()
+            type = FileType[type]
         except KeyError:
-            print("Invalid ftype:", f'"{ftype}"', "Valid types:", 
+            print("Invalid ftype:", f'"{type}"', "Valid types:", 
                 [f.value for f in FileType])
             return
     if not gt:
@@ -68,14 +67,7 @@ def filter(directory, prefix = '', ftype = None, gt = None, lt = None):
         lt = math.inf
     else:
         lt = commands.convert_num(lt)
-    directory_tree.filter(
-        directory, prefix, 
-        **{'ftype': ftype, 'gt': gt, 'lt': lt})
-
-
-@command
-def save():
-    print("I am save!")
+    directory_tree.filter(directory, prefix, type, gt, lt)
 
 
 @command
@@ -91,10 +83,10 @@ def clear():
 
 @command
 def help():
-    click.echo("Available commands:")
+    print("Available commands:")
     for cmd, func in commands.COMMAND_TO_HANDLER.items():
         parameters = inspect.signature(func).parameters.keys()
-        click.echo(f" - {cmd} {' '.join(parameters)}")
+        print(f" - {cmd} {' '.join(parameters)}")
 
 
 @command
@@ -102,7 +94,7 @@ def history():
     hist = prompt_history.get_strings()
     num_padding = len(str(len(hist)))
     for i, cmd in enumerate(hist, 1):
-        click.echo(f"{i:>{num_padding}}  {cmd}")
+        print(f"{i:>{num_padding}}  {cmd}")
 
 
 @command(name = '!')
@@ -114,19 +106,13 @@ def repeat_history(history_index: int):
         return
     hist = prompt_history.get_strings()
     if history_index < 1 or history_index > len(hist):
-        click.echo(f"Invalid history index: {history_index}")
+        print(f"Invalid history index: {history_index}")
         return
     print(hist[history_index - 1])
     commands.handle_command(hist[history_index - 1])
 
 
 def main():
-    commands.handle_command("add dataset")
-    commands.handle_command("view")
-    commands.handle_command("view dataset")
-    commands.handle_command("delete dataset/texts2")
-    commands.handle_command("filter dataset -ftype image")
-
     while True:
         try:
             text = prompt_session.prompt('> ')
