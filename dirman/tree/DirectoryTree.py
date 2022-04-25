@@ -149,7 +149,7 @@ class DirectoryTree:
         """
         ftree = TreeNode()
         # search with a trie
-        if prefix: 
+        if prefix and type(prefix) == str: 
             prefix = prefix.replace("*", "")
             node_gen = self.trie.matching_prefix(prefix)
 
