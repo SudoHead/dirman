@@ -34,13 +34,7 @@ class DirectoryTree:
             return
         total_size = self._radd(directory)
         path = pathlib.Path(directory)
-        if directory == '.':
-            for p in path.glob('*'):
-                if not p.is_dir():
-                    continue
-                root_node = self._insert_node(self.root, str(p), total_size, is_dir = True)
-                self.added_dirs.append(root_node)
-        elif path.is_dir:
+        if path.is_dir:
             root_node = self._insert_node(self.root, str(path), total_size, is_dir = True)
             self.added_dirs.append(root_node)
 
