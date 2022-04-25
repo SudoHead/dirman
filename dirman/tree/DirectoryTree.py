@@ -34,7 +34,13 @@ class DirectoryTree:
             return
         total_size = self._radd(directory)
         path = pathlib.Path(directory)
-        if path.is_dir:
+        if directory == '.':
+            for p in path.glob('*'):
+                if not p.is_dir():
+                    continue
+                root_node = self._insert_node(self.root, str(p), total_size, is_dir = True)
+                self.added_dirs.append(root_node)
+        elif path.is_dir:
             root_node = self._insert_node(self.root, str(path), total_size, is_dir = True)
             self.added_dirs.append(root_node)
 
@@ -56,7 +62,7 @@ class DirectoryTree:
         
         total_size = 0
         for p in path.glob('*'):
-            if p.name.startswith('.'): # avoid hidden files
+            if p.name.startswith('.') or p.is_symlink(): # avoid hidden files and symlinks
                 continue
             if p.is_dir():
                 total_size += self._radd(str(p))
@@ -66,10 +72,12 @@ class DirectoryTree:
             # update the trie reference
             if not p.is_dir():
                 node = self.trie.get(p.name)
-                if node is None:
-                    self.trie.insert(p.name, [ins_node])
-                else:
+                if node:
+                    if not node.value:
+                        node.value = []
                     node.value.append(ins_node)
+                else:
+                    self.trie.insert(p.name, [ins_node])
         return total_size
 
 
