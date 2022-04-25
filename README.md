@@ -137,3 +137,10 @@ Unit testing is implemented using the *pytest* library. To run the tests:
 ```sh
 (venv) $ python -m pytest tests
 ```
+
+## Some known issues
+
+- Folder size does not update when deleting subfolders.
+- Sorting only works running ```view``` with no arguments.
+- Incorrect error message when running ```filter``` with no results.
+- Empty folders are shown in tree view when files are filtered out.
