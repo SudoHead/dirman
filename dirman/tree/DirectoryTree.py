@@ -1,7 +1,8 @@
+from unicodedata import numeric
 from dirman.tree.TreeNode import TreeNode
 from dirman.tree.TrieST import TrieST
 import pathlib, os
-from dirman.tree.info import DirInfo, FileInfo
+from dirman.tree.info import DirInfo, FileInfo, FileType
 import rich
 from rich.console import Console
 from rich.table import Table
@@ -139,7 +140,11 @@ class DirectoryTree:
         rconsole.print(table)
 
 
-    def filter(self, directory: str = '', prefix: str = '', *args, **kwargs):
+    def filter(
+            self, 
+            directory: str = '', prefix: str = '', 
+            ftype: FileType = None, gt = None, lt = None,
+        ):
         """
         Filters the directory tree based on the input prefix.
 
@@ -169,7 +174,7 @@ class DirectoryTree:
         if subtree is None:
             path_not_exist_error(directory)
             return
-        rich.print(subtree.view_tree(**kwargs))
+        rich.print(subtree.view_tree(ftype=ftype, gt=gt, lt=lt))
 
 
     def _get_node(self, root: TreeNode, key: str = '') -> TreeNode:
