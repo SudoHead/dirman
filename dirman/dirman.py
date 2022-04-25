@@ -6,6 +6,8 @@ import dirman.commands as commands
 import inspect, functools
 import math
 
+from dirman.tree.info import FileType
+
 prompt_history = cli.history.InMemoryHistory()
 prompt_session = cli.PromptSession(history = prompt_history)
 
@@ -36,14 +38,28 @@ def delete(path: str):
 
 
 @command
-def view(directory: str = ''):
+def view(
+        directory = '', 
+        sort_by = 'name', r = False,
+    ):
     print("Viewing: ", directory)
+    if directory == '':
+        directory_tree.table_view(sort_by, r)
+        return
     directory_tree.view(directory)
 
 
 @command
-def filter(directory, prefix = '', type = None, gt = None, lt = None):
+def filter(directory, prefix = '', ftype = None, gt = None, lt = None):
     print("Filtering: ", directory)
+    if ftype:
+        try:
+            ftype = ftype.lower()
+            ftype = FileType[ftype]
+        except KeyError:
+            print("Invalid ftype:", f'"{ftype}"', "Valid types:", 
+                [f.value for f in FileType])
+            return
     if not gt:
         gt = -1
     else:
@@ -54,7 +70,7 @@ def filter(directory, prefix = '', type = None, gt = None, lt = None):
         lt = commands.convert_num(lt)
     directory_tree.filter(
         directory, prefix, 
-        **{'type': type, 'gt': gt, 'lt': lt})
+        **{'ftype': ftype, 'gt': gt, 'lt': lt})
 
 
 @command
@@ -105,6 +121,12 @@ def repeat_history(history_index: int):
 
 
 def main():
+    commands.handle_command("add dataset")
+    commands.handle_command("view")
+    commands.handle_command("view dataset")
+    commands.handle_command("delete dataset/texts2")
+    commands.handle_command("filter dataset -ftype image")
+
     while True:
         try:
             text = prompt_session.prompt('> ')

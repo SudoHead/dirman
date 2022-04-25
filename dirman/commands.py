@@ -59,7 +59,7 @@ def handle_command(input_string: str) -> None:
         return
     # calles the command's handler function
     try:
-        handler(*positional, **args)
+        return handler(*positional, **args)
     except TypeError:
         expected_args = inspect.signature(handler).parameters.keys()
         print(f"Command [{cmd}] takes ({', '.join(expected_args)}) " + \

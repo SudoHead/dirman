@@ -17,7 +17,7 @@ def path_not_exist_error(path):
 
 class DirectoryTree:
     def __init__(self):
-        self.root = TreeNode(None, None, None, None)
+        self.root = TreeNode()
         self.trie = TrieST()
         self.added_dirs = []
 
@@ -31,7 +31,7 @@ class DirectoryTree:
         total_size = self._radd(directory)
         path = pathlib.Path(directory)
         if path.is_dir:
-            root_node = self.insert(self.root, str(path), total_size, is_dir = True)
+            root_node = self._insert_node(self.root, str(path), total_size, is_dir = True)
             self.added_dirs.append(root_node)
 
 
@@ -58,7 +58,7 @@ class DirectoryTree:
                 total_size += self._radd(str(p))
             size = p.stat().st_size
             total_size += size
-            ins_node = self.insert(self.root, str(p), size, is_dir = p.is_dir())
+            ins_node = self._insert_node(self.root, str(p), size, is_dir = p.is_dir())
             # update the trie reference
             if not p.is_dir():
                 node = self.trie.get(p.name)
@@ -75,7 +75,7 @@ class DirectoryTree:
         Args:
             path (str): path can be a directory or a file.
         """
-        node = self.get_node(self.root, path)
+        node = self._get_node(self.root, path)
         if node is None:
             path_not_exist_error(path)
             return
@@ -92,24 +92,36 @@ class DirectoryTree:
                 pass
 
 
-    def view(self, directory: str = '', **kwargs):
-        if not directory:
-            self.table_view(**kwargs)
-            return
-        
-        subtree = self.get_node(self.root, directory)
+    def view(self, directory: str = ''):
+        """
+        Displays the directory tree rooted at the input directory.
+
+        Args:
+            directory (str, optional): input directory. Defaults to ''.
+        """        
+        subtree = self._get_node(self.root, directory)
         if subtree is None:
             path_not_exist_error(directory)
             return
-        rich.print(subtree.view_tree(**kwargs))
+        rich.print(subtree.view_tree())
 
 
-    def table_view(self, **kwargs):
+    def table_view(self, sort_by: str = '', r: bool = False):
+        """
+        Displays the added directories tree in a table.
+        """
         table = Table(show_header=True, header_style="bold magenta")
         table.add_column("Directory", style="bold magenta")
         table.add_column("upload time" , style="dim")
         table.add_column("last accessed", style="dim")
         table.add_column("size", justify="right")
+
+        if sort_by == 'name' or sort_by == 'directory':
+            self.added_dirs.sort(key = lambda x: x.value, reverse = r)
+        elif sort_by == 'size':
+            self.added_dirs.sort(key = lambda x: x.info.size, reverse = r)
+        elif sort_by == 'time':
+            self.added_dirs.sort(key = lambda x: x.info.upload_time, reverse = r)
 
         for node in self.added_dirs:
             table.add_row(
@@ -139,7 +151,7 @@ class DirectoryTree:
                 try:
                     node = next(node_gen)
                     for x in node.value:
-                        fnode = self.insert(ftree, x.key, is_dir = x.is_dir)
+                        fnode = self._insert_node(ftree, x.key, is_dir = x.is_dir)
                         fnode.info = x.info
                 except StopIteration:
                     break
@@ -147,14 +159,24 @@ class DirectoryTree:
             ftree = self.root
 
         # view the filtered tree
-        subtree = self.get_node(ftree, directory)
+        subtree = self._get_node(ftree, directory)
         if subtree is None:
             path_not_exist_error(directory)
             return
         rich.print(subtree.view_tree(**kwargs))
 
 
-    def get_node(self, root, key: str = ''):
+    def _get_node(self, root: TreeNode, key: str = '') -> TreeNode:
+        """
+        Returns the node of the tree rooted at the key.
+
+        Args:
+            root (TreeNode): root of the tree.
+            key (str, optional): the key to search for. Defaults to ''.
+
+        Returns:
+            TreeNode: subtree rooted at the key. None if not found.
+        """
         if not key:
             return root
         key = key.split(os.path.sep)
@@ -167,7 +189,19 @@ class DirectoryTree:
         return node
 
 
-    def insert(self, root, key: str = '', size: int = 0, is_dir = False):
+    def _insert_node(self, root, key: str = '', size: int = 0, is_dir = False) -> TreeNode:
+        """
+        Inserts a new node into the tree.
+
+        Args:
+            root (TreeNode): the root of the tree.
+            key (str, optional): the key to insert. Defaults to ''.
+            size (int, optional): size of the file. Defaults to 0.
+            is_dir (bool, optional): True if key is directory. Defaults to False.
+
+        Returns:
+            TreeNode: the added leaf.
+        """
         if not key:
             return root
         tokens = key.split(os.path.sep)
@@ -185,10 +219,8 @@ class DirectoryTree:
             node.children[file] = TreeNode(value = file)
         node = node.children[file]
         node.key = key
-        node.info = FileInfo()
-        node.info.size = size
         if not node.info:
-            node.info = FileInfo()
+            node.info = FileInfo(key) if not is_dir else DirInfo()
         node.info.update(size)
         if is_dir:
             node.is_dir = True

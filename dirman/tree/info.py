@@ -2,7 +2,8 @@
 Convenience classes for dealing with directory and file properties.
 """
 from datetime import datetime
-from strenum import StrEnum
+from enum import Enum
+import filetype
 
 SIZE_SUFFIXES = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -15,13 +16,12 @@ def time_now():
     return datetime_formatter(datetime.now())
 
 
-class FileType(StrEnum):
+class FileType(str, Enum):
     text = 'text'
     image = 'image'
     video = 'video'
     audio = 'audio'
-    binary = 'binary'
-    unknown = 'unknown'
+    application = 'application'
 
 
 class DirInfo:
@@ -70,10 +70,15 @@ class FileInfo(DirInfo):
 
     def __init__(
             self, 
-            type: FileType = FileType.unknown, 
+            name: str, 
             ):
         super().__init__()
-        self.type = type
+        ftype = filetype.guess(name)
+        if ftype is None: # if not binary -> assume text
+            ftype = 'text'
+        else:
+            ftype = ftype.mime.split('/')[0]
+        self.type = FileType[ftype]
 
     def __str__(self):
         return f"{self.last_accessed} {self.humansize()} {self.type}"
