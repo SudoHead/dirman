@@ -77,7 +77,6 @@ An additional Trie data structure stores a copy of all file names. The main purp
     
     can delete files or directories.
     ```sh
-    ```sh
     delete dataset
     ```
 
