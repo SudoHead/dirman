@@ -2,7 +2,7 @@
 Convenience classes for dealing with directory and file properties.
 """
 from datetime import datetime
-from enum import Enum
+from strenum import StrEnum
 
 SIZE_SUFFIXES = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
 
@@ -15,13 +15,13 @@ def time_now():
     return datetime_formatter(datetime.now())
 
 
-class FileType(Enum):
-    text = 1
-    image = 2
-    video = 3
-    audio = 4
-    binary = 5
-    unknown = 6
+class FileType(StrEnum):
+    text = 'text'
+    image = 'image'
+    video = 'video'
+    audio = 'audio'
+    binary = 'binary'
+    unknown = 'unknown'
 
 
 class DirInfo:

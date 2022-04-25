@@ -12,6 +12,7 @@ class TreeNode:
         self.tree_level = tree_level
         self.info = info
 
+
     def reset(self):
         self.children = {}
         self.key = None
@@ -21,7 +22,7 @@ class TreeNode:
             self.info.update(0)
 
 
-    def view_tree(self, type = None, gt = inf, lt = -inf, 
+    def view_tree(self, type = None, gt = -inf, lt = inf, 
         vtree: ViewTree = None):
         """Walk the tree using DFS.
 
@@ -46,10 +47,17 @@ class TreeNode:
             vtree = vtree.add(
                 f"[bold magenta]:open_file_folder: {escape(self.value)}")
         elif self.value \
-            and (not type or self.info.type == type) \
-            and self.info.size > lt \
-            and self.info.size < gt:
+            and (type is None or (self.info and self.info.type.value == type)) \
+            and self.info.size < lt \
+            and self.info.size > gt:
             vtree.add(self.value + f" ({str(self.info)})")
+
         for child in self.children.values():
             child.view_tree(type, gt, lt, vtree)
         return vtree
+
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}(key={self.key}, "\
+            + f"value={self.value}, is_dir={self.is_dir}, "\
+            + f"tree_level={self.tree_level}, info={str(self.info)})"

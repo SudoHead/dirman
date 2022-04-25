@@ -43,6 +43,7 @@ class TrieST:
             if node.children[char].is_dir:
                 tree_level += 1
             node = node.children[char]
+        node.key = key
         node.value = value
         node.is_dir = is_dir
         if root:
@@ -71,32 +72,35 @@ class TrieST:
         return node
 
 
-    def starts_with(self, prefix):
-        self._key_valid(prefix)
+    def copy_path(self, key, tree_copy):
+        if not key:
+            return
         node = self.root
-        for char in prefix:
+        for char in key:
             if char not in node.children:
-                return False
+                return None
             node = node.children[char]
-        return True
+            if node.value is not None:
+                print("Copying:", node.key)
+                _, copy = tree_copy.insert(node.key, node.value, node.is_dir)
+                copy.info = node.info
 
 
     def matching_prefix(self, prefix):
         q = Queue()
-        self._matching_prefix(self.root, [], q)
+        node = self.get(prefix)
+        self._matching_prefix(node, q)
         while not q.empty():
             yield q.get()
 
 
-    def _matching_prefix(self, node, prefix, results_queue):
+    def _matching_prefix(self, node, results_queue):
         if not node:
             return
-        if node.value:
+        if node.value is not None and not node.is_dir:
             results_queue.put(node)
         for child in node.children:
-            prefix.append(child)
-            self._matching_prefix(node.children[child], prefix, results_queue)
-            prefix.pop()
+            self._matching_prefix(node.children[child], results_queue)
 
 
     def matching_pattern(self, pattern):
@@ -129,14 +133,3 @@ class TrieST:
     def _key_valid(self, key):
         if not key:
             raise ValueError("key cannot be null or empty")
-
-
-if __name__ == '__main__':
-    q = Queue()
-    q.put(1)
-    q.put(2)
-    q.put(3)
-    q.put(4)
-
-    while not q.empty():
-        print(q.get())

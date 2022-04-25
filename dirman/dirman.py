@@ -4,6 +4,7 @@ from dirman.tree.TrieST import TrieST
 from dirman.tree.DirectoryTree import DirectoryTree
 import dirman.commands as commands
 import inspect, functools
+import math
 
 prompt_history = cli.history.InMemoryHistory()
 prompt_session = cli.PromptSession(history = prompt_history)
@@ -25,7 +26,7 @@ def command(func = None, name = None, help = None):
 
 @command
 def add(directory: str):
-    print("Added", directory_tree.add(directory), "entries")
+    directory_tree.add(directory)
 
 
 @command
@@ -41,10 +42,19 @@ def view(directory: str = ''):
 
 
 @command
-def filter(directory: str = '', name = '', type = None, gt = None, lt = None):
-    print("Filtering...")
-    output = directory_tree.filter(directory, name, type, gt, lt)
-    click.echo_via_pager(output)
+def filter(directory, prefix = '', type = None, gt = None, lt = None):
+    print("Filtering: ", directory)
+    if not gt:
+        gt = -1
+    else:
+        gt = commands.convert_num(gt)
+    if not lt:
+        lt = math.inf
+    else:
+        lt = commands.convert_num(lt)
+    directory_tree.filter(
+        directory, prefix, 
+        **{'type': type, 'gt': gt, 'lt': lt})
 
 
 @command
@@ -103,8 +113,6 @@ def main():
             break
         except EOFError:
             break
-        else:
-            print('You entered:', text)
     print('Execution interupted!')
 
 

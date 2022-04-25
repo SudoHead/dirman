@@ -67,6 +67,16 @@ def handle_command(input_string: str) -> None:
         return
 
 
+def convert_num(value) -> float:
+    """
+    Converts the value to a number.
+    """
+    try:
+        return float(value)
+    except ValueError:
+        raise ValueError(f"{value} is not an integer")
+
+
 if __name__ == "__main__":
     input_string = input("Enter command: ")
     def show(folder, folder2, **kwargs):
