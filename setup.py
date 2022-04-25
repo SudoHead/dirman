@@ -15,7 +15,7 @@ setup(
     install_requires=requirements,
     entry_points={
         'console_scripts': [
-            'dirman=dirman.dirman:main',
+            'dirmancli=dirman.dirman:main',
         ]
     },
     packages=find_packages('.'),

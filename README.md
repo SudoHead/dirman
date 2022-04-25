@@ -128,16 +128,8 @@ Install the setup.py:
 Once installed, you can run dirman as CLI tool:
 
 ```sh
-(venv) $ dirman
+(venv) $ dirmancli
 ```
-
-or as a script:
-
-```sh
-(venv) $ python dirman/dirman.py
-```
-
-
 ## Tests
 
 Unit testing is implemented using the *pytest* library. To run the tests:

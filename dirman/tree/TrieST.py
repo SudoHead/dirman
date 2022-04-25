@@ -5,7 +5,6 @@ A symbol table implementation using a Trie data structure.
 from queue import Queue
 from typing import Iterator, Tuple
 from dirman.tree.TreeNode import TreeNode
-from dirman.tree.info import DirInfo, FileInfo
 
 class TrieST:
     def __init__(self):

@@ -28,6 +28,9 @@ class DirectoryTree:
         Args:
             directory (str): The directory to add.
         """
+        if not os.path.exists(directory):
+            path_not_exist_error(directory)
+            return
         total_size = self._radd(directory)
         path = pathlib.Path(directory)
         if path.is_dir:

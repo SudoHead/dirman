@@ -1,5 +1,4 @@
 import prompt_toolkit as cli
-from dirman.tree.TrieST import TrieST
 from dirman.tree.DirectoryTree import DirectoryTree
 import dirman.commands as commands
 import inspect, functools
