@@ -52,9 +52,10 @@ class TreeNode:
             vtree = vtree.add(
                 f"[bold magenta]:open_file_folder: {escape(self.value)}")
         elif self.value \
-            and (ftype is None or (self.info and self.info.type == ftype)) \
-            and self.info.size < lt \
-            and self.info.size > gt:
+            and (ftype is None or self.info.type == ftype) \
+            and self.info.size \
+            and (self.info.size < lt \
+            and self.info.size > gt):
             vtree.add(self.value + f" ({str(self.info)})")
 
         for child in self.children.values():

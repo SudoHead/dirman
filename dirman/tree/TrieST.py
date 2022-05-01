@@ -16,7 +16,6 @@ class TrieST:
             key: str, 
             value: str, 
             is_dir: bool = False, 
-            root: bool = False,
         ) -> Tuple[bool, TreeNode]:
         """
         Adds a key-value pair to the TrieST.
@@ -25,7 +24,6 @@ class TrieST:
             key (str): The string key to add.
             value (str): Value of the key.
             is_dir (bool, optional): is key a directory. Defaults to False.
-            root (bool, optional): is key the root directory. Defaults to False.
 
         Returns:
             Tuple[bool, TreeNode]: (True, node) if a new key is inserted,
