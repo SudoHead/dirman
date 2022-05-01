@@ -46,7 +46,7 @@ An additional Trie data structure stores a copy of all file names. The main purp
 
 - **View with sort:** 
 
-    - *-sort_by*: can sort by name, time, size, or date.
+    - *-sort_by*: can sort by name, time, or size.
     - *-r*: add this option to reverse the sort.
  
     ```sh
@@ -76,7 +76,6 @@ An additional Trie data structure stores a copy of all file names. The main purp
 - **delete:**
     
     can delete files or directories.
-    ```sh
     ```sh
     delete dataset
     ```
