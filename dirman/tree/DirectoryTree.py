@@ -56,8 +56,6 @@ class DirectoryTree:
         
         total_size = 0
         for p in path.glob('*'):
-            if p.name.startswith('.') or p.is_symlink(): # avoid hidden files and symlinks
-                continue
             if p.is_dir():
                 total_size += self._radd(str(p))
             size = p.stat().st_size
