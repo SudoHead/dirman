@@ -12,7 +12,7 @@ rconsole = Console()
 
 def path_not_exist_error(path):
     rconsole.print(
-        f"{path} does not exist.", 
+        f"{path} does not exist", 
         style = "bold red")
 
 
@@ -20,7 +20,7 @@ class DirectoryTree:
     def __init__(self):
         self.root = TreeNode()
         self.trie = TrieST()
-        self.added_dirs = []
+        self.added_dirs = {}
 
 
     def add(self, directory: str):
@@ -32,11 +32,18 @@ class DirectoryTree:
         if not os.path.exists(directory):
             path_not_exist_error(directory)
             return
-        total_size = self._radd(directory)
-        path = pathlib.Path(directory)
-        if path.is_dir():
-            root_node = self._insert_node(self.root, str(path), total_size, is_dir = True)
-            self.added_dirs.append(root_node)
+
+        # adds all 
+        if directory == '.':
+            for p in pathlib.Path('.').glob('*'):
+                if not p.name.startswith('.'):
+                    self.add(str(p))
+        else:
+            total_size = self._radd(directory)
+            path = pathlib.Path(directory)
+            if path.is_dir():
+                root_node = self._insert_node(self.root, str(path), total_size, is_dir = True)
+                self.added_dirs[str(path)] = root_node
 
 
     def _radd(self, directory: str) -> int:
@@ -79,9 +86,6 @@ class DirectoryTree:
         Args:
             path (str): path can be a directory or a file.
         """
-        for i, x in enumerate(self.added_dirs):
-            if x.key == path:
-                del self.added_dirs[i]
         node = self._get_node(self.root, path)
         if node is None:
             path_not_exist_error(path)
@@ -97,6 +101,12 @@ class DirectoryTree:
                 self.trie.delete(x.value)
             except ValueError:
                 pass
+        # delete stale nodes from added_dirs
+        for name, node in list(self.added_dirs.items()):
+            if name == path or not node or not node.value:
+                rconsole.print(f"Deleting{' stale' if name != path else ''} {name}", 
+                    style = "red3")
+                del self.added_dirs[name]
 
 
     def view(self, directory: str = ''):
@@ -123,14 +133,15 @@ class DirectoryTree:
         table.add_column("last accessed", style="dim")
         table.add_column("size", justify="right")
 
+        dir_list = self.added_dirs.items()
         if sort_by == 'name' or sort_by == 'directory':
-            self.added_dirs.sort(key = lambda x: x.value, reverse = r)
+            dir_list = sorted(self.added_dirs.items(), key = lambda xv: xv[0], reverse = r)
         elif sort_by == 'size':
-            self.added_dirs.sort(key = lambda x: x.info.size, reverse = r)
+            dir_list = sorted(self.added_dirs.items(), key = lambda xv: xv[1].info.size, reverse = r)
         elif sort_by == 'time':
-            self.added_dirs.sort(key = lambda x: x.info.upload_time, reverse = r)
+            dir_list = sorted(self.added_dirs.items(), key = lambda xv: xv[1].info.upload_time, reverse = r)
 
-        for node in self.added_dirs:
+        for _, node in dir_list:
             table.add_row(
                 node.value,
                 node.info.upload_time,
@@ -188,7 +199,7 @@ class DirectoryTree:
         Returns:
             TreeNode: subtree rooted at the key. None if not found.
         """
-        if not key:
+        if not key or key == '.':
             return root
         key = key.split(os.path.sep)
         node = root
@@ -213,7 +224,7 @@ class DirectoryTree:
         Returns:
             TreeNode: the added leaf.
         """
-        if not key:
+        if not key or key == '.':
             return root
         tokens = key.split(os.path.sep)
         file = tokens.pop()
@@ -230,6 +241,8 @@ class DirectoryTree:
             node.children[file] = TreeNode(value = file)
         node = node.children[file]
         node.key = key
+        if not node.value: # if deleted previously
+            node.value = file
         if not node.info:
             node.info = FileInfo(key) if not is_dir else DirInfo()
         node.info.update(size)

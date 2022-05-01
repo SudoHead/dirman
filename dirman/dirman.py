@@ -1,5 +1,5 @@
 import prompt_toolkit as cli
-from dirman.tree.DirectoryTree import DirectoryTree
+from dirman.tree.DirectoryTree import DirectoryTree, rconsole
 import dirman.commands as commands
 import inspect, functools
 import math
@@ -25,13 +25,20 @@ def command(func = None, name = None, help = None):
 
 
 @command
+def ls():
+    import pathlib, rich
+    for p in pathlib.Path('.').glob('*'):
+        if not p.name.startswith('.'):
+            rconsole.print(p.name, style = "bold dodger_blue1")
+
+
+@command
 def add(directory: str):
     directory_tree.add(directory)
 
 
 @command
 def delete(path: str):
-    print("Deleting:", path)
     directory_tree.delete(path)
 
 
