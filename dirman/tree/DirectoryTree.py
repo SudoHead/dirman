@@ -173,6 +173,7 @@ class DirectoryTree:
                 try:
                     node = next(node_gen)
                     for x in node.value:
+                        x.info.update()
                         fnode = self._insert_node(ftree, x.key, is_dir = x.is_dir)
                         fnode.info = x.info
                 except StopIteration:

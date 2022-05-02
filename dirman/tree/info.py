@@ -39,9 +39,9 @@ class DirInfo:
         self.last_accessed = last_accessed
         self.size = size
 
-    def update(self, size_bytes: int) -> None:
+    def update(self, size_bytes: int = None) -> None:
         self.last_accessed = time_now()
-        self.size = size_bytes
+        self.size = size_bytes or self.size
 
     def humansize(self):
         """
