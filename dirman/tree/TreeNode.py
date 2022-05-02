@@ -58,7 +58,8 @@ class TreeNode:
             and self.info.size > gt):
             vtree.add(self.value + f" ({str(self.info)})")
 
-        self.info.update()
+        if self.info:
+            self.info.update()
         for child in self.children.values():
             child.view_tree(ftype, gt, lt, vtree)
         return vtree
