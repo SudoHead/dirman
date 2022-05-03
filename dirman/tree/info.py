@@ -81,4 +81,4 @@ class FileInfo(DirInfo):
         self.type = FileType[ftype]
 
     def __str__(self):
-        return f"{self.last_accessed} {self.humansize()} {self.type}"
+        return f"{self.upload_time} {self.humansize()} {self.type}"

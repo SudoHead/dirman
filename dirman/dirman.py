@@ -26,7 +26,7 @@ def command(func = None, name = None, help = None):
 
 @command
 def ls():
-    import pathlib, rich
+    import pathlib
     for p in pathlib.Path('.').glob('*'):
         if not p.name.startswith('.'):
             rconsole.print(p.name, style = "bold dodger_blue1")
@@ -46,16 +46,17 @@ def delete(path: str):
 def view(
         directory = '', 
         sort_by = 'name', r = False,
+        pager = False,
     ):
     print("Viewing: ", directory)
     if directory == '':
         directory_tree.table_view(sort_by, r)
         return
-    directory_tree.view(directory)
+    directory_tree.view(directory, pager = pager)
 
 
 @command
-def filter(directory, prefix = '', type = None, gt = None, lt = None):
+def filter(directory, prefix = '', type = None, gt = None, lt = None, pager = False):
     print("Filtering: ", directory)
     if type:
         try:
@@ -73,7 +74,7 @@ def filter(directory, prefix = '', type = None, gt = None, lt = None):
         lt = math.inf
     else:
         lt = commands.convert_num(lt)
-    directory_tree.filter(directory, prefix, type, gt, lt)
+    directory_tree.filter(directory, prefix, type, gt, lt, pager = pager)
 
 
 @command

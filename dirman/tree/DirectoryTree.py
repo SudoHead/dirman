@@ -109,7 +109,7 @@ class DirectoryTree:
                 del self.added_dirs[name]
 
 
-    def view(self, directory: str = ''):
+    def view(self, directory: str = '', pager: bool = False):
         """
         Displays the directory tree rooted at the input directory.
 
@@ -120,7 +120,11 @@ class DirectoryTree:
         if subtree is None:
             path_not_exist_error(directory)
             return
-        rich.print(subtree.view_tree())
+        if pager:
+            with rconsole.pager(styles=True):
+                rconsole.print(subtree.view_tree())
+        else:
+            rconsole.print(subtree.view_tree())
 
 
     def table_view(self, sort_by: str = '', r: bool = False):
@@ -139,7 +143,7 @@ class DirectoryTree:
         elif sort_by == 'size':
             dir_list = sorted(self.added_dirs.items(), key = lambda xv: xv[1].info.size, reverse = r)
         elif sort_by == 'time':
-            dir_list = sorted(self.added_dirs.items(), key = lambda xv: xv[1].info.upload_time, reverse = r)
+            dir_list = sorted(self.added_dirs.items(), key = lambda xv: xv[1].info.last_accessed, reverse = r)
 
         for _, node in dir_list:
             table.add_row(
@@ -155,6 +159,7 @@ class DirectoryTree:
             self, 
             directory: str = '', prefix: str = '', 
             ftype: FileType = None, gt = None, lt = None,
+            pager: bool = False,
         ):
         """
         Filters the directory tree based on the input prefix.
@@ -186,8 +191,11 @@ class DirectoryTree:
         if subtree is None:
             path_not_exist_error(directory)
             return
-        rich.print(subtree.view_tree(ftype=ftype, gt=gt, lt=lt))
-
+        if pager:
+            with rconsole.pager(styles=True):
+                rconsole.print(subtree.view_tree(ftype=ftype, gt=gt, lt=lt))
+        else:
+            rconsole.print(subtree.view_tree(ftype=ftype, gt=gt, lt=lt))
 
     def _get_node(self, root: TreeNode, key: str = '') -> TreeNode:
         """
